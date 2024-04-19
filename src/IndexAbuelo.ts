@@ -5,7 +5,7 @@ import { getPeople } from "./data/getEpisode";
 
 
 class AppContainer extends HTMLElement {
-	// FavoriteFilms: Film[]: []
+	FavoriteFilms: any[] = []
 
 	constructor() {
 		super();
@@ -25,6 +25,10 @@ class AppContainer extends HTMLElement {
                 ${stylesIndex}
                 </style>`}
 
+			const FilmsSection =  this.ownerDocument.createElement("section");
+
+			const FavoriteFilmsSection =  this.ownerDocument.createElement("section");
+
 			dataFilms.forEach((dataFilm: any) => {
 				const cardFilm = this.ownerDocument.createElement('film-card') as Film;
 				cardFilm.setAttribute(AttributeFilm.tittle, dataFilm.title);
@@ -36,8 +40,25 @@ class AppContainer extends HTMLElement {
 				cardFilm.setAttribute(AttributeFilm.people, dataFilm.people[0])
 				console.log(dataFilm.people)
 
-				this.shadowRoot?.appendChild(cardFilm)
+				const button = this.ownerDocument.createElement("button");
+            	button.textContent= 'AddFavorite'
+				button.addEventListener('click', () => {
+					// Agregar el nuevo elemento Film a FavoriteFilms
+					FavoriteFilmsSection.appendChild(cardFilm);
+				});
+
+				FilmsSection.appendChild(button)
+				FilmsSection.appendChild(cardFilm)
 			});
+
+			this.shadowRoot?.appendChild(FilmsSection)
+
+			const FavoriteTitle = this.ownerDocument.createElement('h2')
+			FavoriteTitle.textContent= 'FAVORITES'
+			this.shadowRoot?.appendChild(FavoriteTitle)
+
+			this.shadowRoot?.appendChild(FavoriteFilmsSection)
+
 
 			
 		

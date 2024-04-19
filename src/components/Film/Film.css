@@ -1,0 +1,8 @@
+.film-section{
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+}
+
+section{
+    display: flex;
+}

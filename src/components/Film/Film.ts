@@ -64,14 +64,17 @@ class Film extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = '';
     
-            const css = this.ownerDocument.createElement('style');
-            css.textContent = stylesFilm;
-            this.shadowRoot.appendChild(css);
+            if(this.shadowRoot){
+                this.shadowRoot.innerHTML = `
+                    <style>
+                    ${stylesFilm}
+                    </style>`}
 
             //Creo la section grande del film donde voy a meter cada uno de los parámetros que voy
             //a recibir: title, image...
     
             const filmSection = this.ownerDocument.createElement('section');
+            filmSection.className = 'film-section'
     
             const title = this.ownerDocument.createElement('h1');
             title.textContent = this.tittle || 'No hay Title';
