@@ -67,7 +67,26 @@ class Film extends HTMLElement {
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML = `
                     <style>
-                    ${stylesFilm}
+                    
+                    
+                    section{
+                        display: flex;
+                        flex-direction: column;
+                        width: 20rem;
+                        margin-top: 2rem;
+                        background-color: rgb(255, 255, 255);
+                        padding: 2rem;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 0.5rem;
+                    }
+                    
+                    img{
+                        width: 10rem;
+                    }
+                    h1, h2{
+                        margin: 0;
+                    }
                     </style>`}
 
             //Creo la section grande del film donde voy a meter cada uno de los parámetros que voy
@@ -85,19 +104,19 @@ class Film extends HTMLElement {
             image.alt = 'Film Image';
             filmSection.appendChild(image);
     
-            const originalTitle = this.ownerDocument.createElement('h1');
+            const originalTitle = this.ownerDocument.createElement('h2');
             originalTitle.textContent = this.originaltitle || 'No Original Title';
             filmSection.appendChild(originalTitle);
     
-            const releaseDate = this.ownerDocument.createElement('h1');
+            const releaseDate = this.ownerDocument.createElement('h2');
             releaseDate.textContent = this.releasedate || 'No Release Date';
             filmSection.appendChild(releaseDate);
     
-            const description = this.ownerDocument.createElement('h1');
+            const description = this.ownerDocument.createElement('p');
             description.textContent = this.description || 'No Description';
             filmSection.appendChild(description);
     
-            const director = this.ownerDocument.createElement('h1');
+            const director = this.ownerDocument.createElement('p');
             director.textContent = this.director || 'No Director';
             filmSection.appendChild(director);
 

@@ -6,3 +6,7 @@
 section{
     display: flex;
 }
+
+img{
+    width: 20px;
+}
